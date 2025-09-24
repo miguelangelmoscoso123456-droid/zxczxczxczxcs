@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Para Ariana — Ramo de Rosas Amarillas</title>
+<meta name="description" content="Un ramo digital de rosas amarillas, animado y brillante, con una disculpa sincera." />
+<style>
+/* ================= VARIABLES ================= */
+:root{
+  --bg1:#0f1013; --bg2:#16181d;
+  --txt:#f9f6ef; --sub:#d9d4c8;
+  --amarillo:#ffeb3b; --amarillo2:#ffd54f; --amarillo3:#fbc02d;
+  --verde:#2e7d32; --verde2:#66bb6a; --verde3:#1b5e20;
+  --dorado:#f7d27a; --naranja:#f57f17; --rosa:#ffca28;
+  --glass: rgba(255,255,255,.10); --glass2: rgba(255,255,255,.06);
+  --shadow: 0 30px 80px rgba(0,0,0,.55);
+}
+/* ================= BASE ================= */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; color:var(--txt);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  background:
+    radial-gradient(1300px 900px at 90% -10%, #272a31 0%, var(--bg1) 45%),
+    radial-gradient(1200px 800px at 10% 110%, #1a1c21 0%, var(--bg2) 55%);
+  overflow-x:hidden;
+}
+/* halos suaves */
+.halo, .halo2, .halo3{
+  position:fixed; inset:auto; width:70vmax; height:70vmax; pointer-events:none; filter:blur(60px); z-index:0; opacity:.65;
+  animation: flotar 22s ease-in-out infinite;
+}
+.halo{ left:-20vmax; top:-10vmax; background:radial-gradient(circle at 50% 50%, rgba(255,235,59,.16), transparent 60%); }
+.halo2{ right:-15vmax; top:-10vmax; background:radial-gradient(circle at 50% 50%, rgba(255,193,7,.15), transparent 60%); animation-direction:reverse; }
+.halo3{ left:10vmax; bottom:-20vmax; background:radial-gradient(circle at 50% 50%, rgba(255,214,79,.12), transparent 60%); animation-duration:26s; }
+@keyframes flotar{ 0%,100%{ transform:translateY(-2%) } 50%{ transform:translateY(2%) } }
+
+/* estrellas/sparkles */
+.spark{
+  position:fixed; inset:0; z-index:1; pointer-events:none; mix-blend-mode:screen; opacity:.9;
+}
+
+/* ================= CABECERA ================= */
+header{ position:relative; z-index:3; text-align:center; padding:clamp(28px,4vw,48px) 16px 8px }
+.titulo{
+  display:inline-block; font-weight:900; letter-spacing:.4px;
+  font-size:clamp(34px,7vw,66px);
+  background:linear-gradient(90deg, var(--amarillo), var(--naranja));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  text-shadow:0 0 40px rgba(255,214,79,.22);
+  animation: popIn .9s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes popIn{ from{ transform:translateY(10px) scale(.98); filter:blur(6px); opacity:0 } to{ transform:none; filter:none; opacity:1 } }
+.sub{ margin:.35rem auto 0; max-width:820px; color:var(--sub); opacity:.92; font-size:clamp(14px,2.4vw,18px) }
+
+/* ================= CONTENIDO ================= */
+.wrap{ position:relative; z-index:3; width:min(1100px,94vw); margin:24px auto 56px; padding:0 10px }
+.card{
+  background:linear-gradient(180deg, var(--glass), var(--glass2));
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:24px; padding:clamp(18px,3vw,28px);
+  box-shadow:var(--shadow); backdrop-filter: blur(12px) saturate(130%);
+  overflow:hidden; position:relative;
+}
+
+.fila{ display:flex; gap:24px; flex-wrap:wrap; align-items:center; justify-content:space-between }
+
+/* ================= BOTONES ================= */
+.btn{
+  appearance:none; border:none; cursor:pointer; font-weight:800; letter-spacing:.3px;
+  padding:14px 18px; border-radius:14px; color:#3b2c12;
+  background:linear-gradient(90deg, var(--amarillo), var(--rosa));
+  box-shadow:0 14px 34px rgba(245,127,23,.38);
+  transition:transform .08s ease, box-shadow .2s ease, filter .2s ease;
+}
+.btn:hover{ transform:translateY(-1px); box-shadow:0 18px 42px rgba(245,127,23,.48); filter:brightness(1.05) }
+.btn:active{ transform:translateY(1px) }
+.btn-ghost{
+  background:transparent; color:var(--txt);
+  border:1px solid rgba(255,255,255,.28); box-shadow:none;
+}
+
+/* ================= TEXTO ESCRITURA ================= */
+.type{
+  font-size:clamp(17px,2.4vw,21px); line-height:1.75; white-space:pre-wrap; min-height:9.5em;
+}
+.firma{ margin-top:10px; opacity:.8; font-size:13px }
+
+/* ================= RAMO PRINCIPAL ================= */
+.ramo{
+  width:min(520px,92vw); aspect-ratio:1/1.2; margin:auto; display:block; filter:drop-shadow(0 12px 40px rgba(255,214,79,.22));
+  animation: flotar 8s ease-in-out infinite;
+}
+/* pequeño brillo en flores */
+.glow{ filter:url(#glow) }
+
+/* ================= JARDÍN / RAMOS EXTRA ================= */
+.galeria{
+  display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap:14px; margin-top:18px
+}
+.thumb{
+  position:relative; border-radius:16px; padding:10px; text-align:center; overflow:hidden;
+  background:linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.08));
+  border:1px solid rgba(255,255,255,.2);
+}
+.thumb .mini{ width:100%; aspect-ratio:1/1.1; display:block }
+.badge{
+  position:absolute; top:8px; right:8px; font-size:12px; padding:4px 8px; border-radius:999px;
+  background:linear-gradient(90deg, var(--amarillo2), var(--amarillo3)); color:#3b2c12; font-weight:900
+}
+
+/* ================= PETALOS ================= */
+.petalo{
+  position:fixed; top:-10vh; width:18px; height:22px; border-radius:18px 18px 4px 18px;
+  background:radial-gradient(circle at 30% 30%, #fff59d, var(--amarillo2) 60%, #f9a825 90%);
+  box-shadow: inset -2px -3px 5px rgba(0,0,0,.1);
+  opacity:.95; transform-origin:center; z-index:2;
+  animation: caer linear forwards, girar ease-in-out infinite;
+}
+@keyframes caer { to { transform: translateY(110vh) rotate(0deg) } }
+@keyframes girar { 0%{ rotate:0deg } 50%{ rotate:25deg } 100%{ rotate:-10deg } }
+
+/* ================= CANVAS LAYERS ================= */
+canvas#confetti{ position:fixed; inset:0; z-index:2; pointer-events:none }
+
+/* ================= FOOT ================= */
+.pie{ text-align:center; color:var(--sub); opacity:.8; padding:22px 0 44px; font-size:13px }
+@media (max-width:520px){ .btn{ width:100% } }
+</style>
+</head>
+<body>
+  <!-- halos -->
+  <div class="halo"></div><div class="halo2"></div><div class="halo3"></div>
+  <!-- sparkles -->
+  <svg class="spark" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <radialGradient id="sg" cx="50%" cy="50%">
+        <stop offset="0" stop-color="#fff59d" stop-opacity=".5"/>
+        <stop offset=".4" stop-color="#ffe082" stop-opacity=".15"/>
+        <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <!-- unas burbujas de brillo suaves -->
+    <circle cx="12" cy="20" r="6" fill="url(#sg)">
+      <animate attributeName="cy" values="20;18;20" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="12;14;12" dur="7s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="88" cy="16" r="5" fill="url(#sg)">
+      <animate attributeName="cy" values="16;13;16" dur="7s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="88;86;88" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="50" cy="96" r="7" fill="url(#sg)">
+      <animate attributeName="cy" values="96;93;96" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="50;53;50" dur="9s" repeatCount="indefinite"/>
+    </circle>
+  </svg>
+
+  <canvas id="confetti"></canvas>
+
+  <header>
+    <h1 class="titulo">Para Ariana 🌼 — Ramo Amarillo</h1>
+    <p class="sub">Si hoy hubo lágrimas, aquí se vuelven <b>luz y flores</b>. Este ramo es para ti, con una disculpa y mucho cariño.</p>
+  </header>
+
+  <div class="wrap">
+    <section class="card">
+      <div class="fila">
+        <div style="flex:1 1 480px; min-width:260px">
+          <p id="type" class="type" aria-live="polite"></p>
+          <div class="fila" style="gap:12px">
+            <button class="btn" id="btnAbrir">Abrir ramo 🌼</button>
+            <button class="btn btn-ghost" id="btnGigante" title="Hacer el ramo enorme">Bouquet gigante ✨</button>
+            <button class="btn btn-ghost" id="btnMas" title="Crear ramos extra">Más ramos ➕</button>
+          </div>
+          <p class="firma">Hecho con HTML + CSS + JS — porque el cariño también se programa 💛</p>
+        </div>
+
+        <div style="flex:1 1 420px; max-width:520px">
+          <!-- ============= RAMO PRINCIPAL ============= -->
+          <svg class="ramo" viewBox="0 0 200 240" role="img" aria-label="Ramo de rosas amarillas">
+            <defs>
+              <!-- brillos / glow -->
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                <feMerge>
+                  <feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+              <!-- pétalo -->
+              <radialGradient id="petalo" cx="40%" cy="35%">
+                <stop offset="0%" stop-color="#fff59d"/>
+                <stop offset="60%" stop-color="#ffeb3b"/>
+                <stop offset="100%" stop-color="#f9a825"/>
+              </radialGradient>
+              <!-- tallo -->
+              <linearGradient id="tallo" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#81c784"/>
+                <stop offset="100%" stop-color="#2e7d32"/>
+              </linearGradient>
+              <!-- papel del ramo -->
+              <linearGradient id="papel" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0%" stop-color="rgba(255,239,170,.9)"/>
+                <stop offset="100%" stop-color="rgba(255,223,120,.85)"/>
+              </linearGradient>
+              <linearGradient id="lazoGrad" x1="0" x2="1">
+                <stop offset="0%" stop-color="#f7d27a"/><stop offset="100%" stop-color="#f57f17"/>
+              </linearGradient>
+            </defs>
+
+            <!-- papel en forma de cono -->
+            <g opacity=".98">
+              <path d="M100 200 C 40 168, 30 120, 52 86
+                       C 72 56, 128 56, 148 86
+                       C 170 120, 160 168, 100 200 Z"
+                    fill="url(#papel)" stroke="#f1d57a" stroke-opacity=".6"/>
+              <!-- borde papel -->
+              <path d="M54 94 C 76 68, 124 68, 146 94" fill="none" stroke="rgba(247,210,122,.9)" stroke-width="2" />
+            </g>
+
+            <!-- lazo -->
+            <g class="glow">
+              <ellipse cx="100" cy="168" rx="18" ry="8" fill="url(#lazoGrad)" opacity=".95"/>
+              <path d="M82 166 C 70 160, 62 152, 58 146 C 66 148, 78 154, 88 162 Z" fill="url(#lazoGrad)" />
+              <path d="M118 166 C 130 160, 138 152, 142 146 C 134 148, 122 154, 112 162 Z" fill="url(#lazoGrad)" />
+              <rect x="96" y="160" width="8" height="16" rx="4" fill="#f6c55f"/>
+            </g>
+
+            <!-- tallos (dentro del papel) -->
+            <g stroke="url(#tallo)" stroke-width="3" fill="none" opacity=".95">
+              <path d="M86 160 C 86 130, 78 110, 70 88"/>
+              <path d="M100 164 C 100 126, 100 108, 100 88"/>
+              <path d="M114 160 C 114 130, 122 110, 130 90"/>
+              <path d="M94 158 C 94 132, 84 116, 76 98"/>
+              <path d="M106 158 C 106 130, 116 116, 124 98"/>
+            </g>
+
+            <!-- grupo de flores (capas para volumen) -->
+            <g id="flores" class="glow">
+              <!-- función “flor” repetida con distintas posiciones -->
+              <!-- fila 1 -->
+              <g transform="translate(70,88) scale(1)">
+                <circle cx="0" cy="0" r="16" fill="url(#petalo)"/>
+                <path d="M0 -22 C 12 -16, 18 -4, 18 4 s-10 10-18 10 s-18 -4-18 -12 s6 -22, 18 -22z" fill="url(#petalo)"/>
+                <path d="M-16 0 c0 8 16 10 16 10 s16-2 16-10 s-8-14 -16-14 s-16 6 -16 14z" fill="url(#petalo)" opacity=".95"/>
+              </g>
+              <g transform="translate(100,84) scale(1.15)">
+                <circle cx="0" cy="0" r="16" fill="url(#petalo)"/>
+                <path d="M0 -22 C 12 -16, 18 -4, 18 4 s-10 10-18 10 s-18 -4-18 -12 s6 -22, 18 -22z" fill="url(#petalo)"/>
+                <path d="M-16 0 c0 8 16 10 16 10 s16-2 16-10 s-8-14 -16-14 s-16 6 -16 14z" fill="url(#petalo)" opacity=".95"/>
+              </g>
+              <g transform="translate(130,90) scale(1)">
+                <circle cx="0" cy="0" r="16" fill="url(#petalo)"/>
+                <path d="M0 -22 C 12 -16, 18 -4, 18 4 s-10 10-18 10 s-18 -4-18 -12 s6 -22, 18 -22z" fill="url(#petalo)"/>
+                <path d="M-16 0 c0 8 16 10 16 10 s16-2 16-10 s-8-14 -16-14 s-16 6 -16 14z" fill="url(#petalo)" opacity=".95"/>
+              </g>
+              <!-- fila 2 -->
+              <g transform="translate(84,108) scale(.98)">
+                <circle cx="0" cy="0" r="16" fill="url(#petalo)"/>
+                <path d="M0 -22 C 12 -16, 18 -4, 18 4 s-10 10-18 10 s-18 -4-18 -12 s6 -22, 18 -22z" fill="url(#petalo)"/>
+                <path d="M-16 0 c0 8 16 10 16 10 s16-2 16-10 s-8-14 -16-14 s-16 6 -16 14z" fill="url(#petalo)" opacity=".95"/>
+              </g>
+              <g transform="translate(116,110) scale(1)">
+                <circle cx="0" cy="0" r="16" fill="url(#petalo)"/>
+                <path d="M0 -22 C 12 -16, 18 -4, 18 4 s-10 10-18 10 s-18 -4-18 -12 s6 -22, 18 -22z" fill="url(#petalo)"/>
+                <path d="M-16 0 c0 8 16 10 16 10 s16-2 16-10 s-8-14 -16-14 s-16 6 -16 14z" fill="url(#petalo)" opacity=".95"/>
+              </g>
+              <!-- hojas para volumen -->
+              <g fill="#66bb6a" opacity=".95">
+                <path d="M76 126 c-24 -10 -28 -8 -44 2 16 8 18 10 44 -2z"/>
+                <path d="M124 126 c28 -8 30 -10 46 -1 -18 10 -20 12 -46 1z"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <!-- GALERÍA DE RAMOS EXTRA -->
+      <section id="galeria" class="galeria" aria-hidden="true" style="display:none"></section>
+    </section>
+  </div>
+
+  <p class="pie">Con cariño y disculpas sinceras para Ariana 💛</p>
+
+<script>
+/* ================ TEXTO CON EFECTO ESCRITURA ================= */
+const texto = `Ariana,
+sé que el 21 fue el día de las rosas amarillas… y llegué tarde.
+Perdóname. No fue falta de ganas; fue el reloj jugando en contra.
+
+Hoy quise hacer algo lindo: un ramo que cruce la distancia,
+que convierta lágrimas en pétalos y te abrace con luz.
+
+¿Aceptas estas flores y mis disculpas?`;
+const typeEl = document.getElementById('type');
+let idx = 0;
+(function type(){
+  if(idx <= texto.length){
+    typeEl.textContent = texto.slice(0, idx++);
+    const ch = texto[idx-1];
+    const speed = ('.!¿?\n…'.includes(ch)) ? 90 : 24;
+    setTimeout(type, speed);
+  }
+})();
+
+/* ================ CONFETTI SUAVE ================= */
+const c2 = document.getElementById('confetti');
+const kx = c2.getContext('2d');
+function confetti(){
+  c2.width = innerWidth; c2.height = innerHeight;
+  const piezas = Array.from({length: 180}, () => ({
+    x: Math.random()*c2.width, y: -10 - Math.random()*c2.height,
+    s: 3 + Math.random()*6, v: 1 + Math.random()*2.4, a: Math.random()*Math.PI
+  }));
+  let t = 0;
+  (function anim(){
+    kx.clearRect(0,0,c2.width,c2.height);
+    piezas.forEach(p=>{
+      p.y += p.v; p.x += Math.sin((t+p.a))*0.9; p.a += 0.03;
+      kx.save(); kx.translate(p.x, p.y); kx.rotate(p.a);
+      kx.fillStyle = (Math.random()<.5)? '#ffd54f' : '#ffca28';
+      kx.fillRect(-p.s/2, -p.s/2, p.s, p.s);
+      kx.restore();
+    });
+    t += 0.02; if(t < 9) requestAnimationFrame(anim);
+  })();
+}
+
+/* ================ PÉTALOS ================= */
+function soltarPetalos(cantidad=36){
+  for(let p=0;p<cantidad;p++){
+    const el = document.createElement('div');
+    el.className = 'petalo';
+    el.style.left = (Math.random()*100) + 'vw';
+    el.style.animationDuration = (8 + Math.random()*6) + 's';
+    el.style.animationDelay = (Math.random()*1.6) + 's';
+    el.style.filter = `hue-rotate(${(Math.random()*16)-8}deg)`;
+    el.style.transform = `translateY(-10vh) rotate(${(Math.random()*60-30)}deg)`;
+    document.body.appendChild(el);
+    setTimeout(()=> el.remove(), 16000);
+  }
+}
+
+/* ================ BOTONES ================= */
+const btnAbrir = document.getElementById('btnAbrir');
+const btnGigante = document.getElementById('btnGigante');
+const btnMas = document.getElementById('btnMas');
+const galeria = document.getElementById('galeria');
+
+btnAbrir.addEventListener('click', ()=>{
+  confetti();
+  soltarPetalos(42);
+  // pequeño zoom de las flores
+  const flores = document.getElementById('flores');
+  flores.animate([
+    { transform:'scale(1)', filter:'brightness(1)' },
+    { transform:'scale(1.06)', filter:'brightness(1.05)' },
+    { transform:'scale(1)', filter:'brightness(1)' }
+  ], { duration:1200, easing:'cubic-bezier(.2,.8,.2,1)' });
+});
+
+let gigante = false;
+btnGigante.addEventListener('click', ()=>{
+  const ramo = document.querySelector('.ramo');
+  gigante = !gigante;
+  ramo.animate([
+    { transform: 'scale(1)', filter:'drop-shadow(0 12px 40px rgba(255,214,79,.22))' },
+    { transform: 'scale(1.18)', filter:'drop-shadow(0 16px 60px rgba(255,214,79,.35))' }
+  ], { duration:600, fill:'forwards', easing:'cubic-bezier(.2,.8,.2,1)' });
+  if(!gigante){
+    ramo.animate([{ transform:'scale(1.18)' },{ transform:'scale(1)' }], { duration:600, fill:'forwards' });
+  }
+});
+
+/* ================ GENERADOR DE RAMOS EXTRA ================= */
+function crearMiniRamo(scale=0.6){
+  // mini SVG basado en el ramo principal (simplificado)
+  const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.setAttribute('class','mini');
+  svg.setAttribute('viewBox','0 0 200 240');
+
+  const defs = document.querySelector('.ramo defs').cloneNode(true);
+  svg.appendChild(defs);
+
+  const g = document.createElementNS('http://www.w3.org/2000/svg','g');
+  g.setAttribute('transform',`translate(0,0) scale(${scale})`);
+  svg.appendChild(g);
+
+  // papel
+  const pathPapel = document.createElementNS('http://www.w3.org/2000/svg','path');
+  pathPapel.setAttribute('d','M100 200 C 40 168, 30 120, 52 86 C 72 56, 128 56, 148 86 C 170 120, 160 168, 100 200 Z');
+  pathPapel.setAttribute('fill','url(#papel)');
+  pathPapel.setAttribute('stroke','#f1d57a'); pathPapel.setAttribute('stroke-opacity','.6');
+  g.appendChild(pathPapel);
+
+  // flores (5)
+  function flor(x,y,s=1){
+    const grp = document.createElementNS('http://www.w3.org/2000/svg','g');
+    grp.setAttribute('transform',`translate(${x},${y}) scale(${s})`);
+    const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    c.setAttribute('cx','0'); c.setAttribute('cy','0'); c.setAttribute('r','16'); c.setAttribute('fill','url(#petalo)');
+    const p1 = document.createElementNS('http://www.w3.org/2000/svg','path');
+    p1.setAttribute('d','M0 -22 C 12 -16, 18 -4, 18 4 s-10 10-18 10 s-18 -4-18 -12 s6 -22, 18 -22z'); p1.setAttribute('fill','url(#petalo)');
+    const p2 = document.createElementNS('http://www.w3.org/2000/svg','path');
+    p2.setAttribute('d','M-16 0 c0 8 16 10 16 10 s16-2 16-10 s-8-14 -16-14 s-16 6 -16 14z'); p2.setAttribute('fill','url(#petalo)'); p2.setAttribute('opacity','.95');
+    grp.appendChild(c); grp.appendChild(p1); grp.appendChild(p2);
+    g.appendChild(grp);
+  }
+  flor(70,88,1); flor(100,84,1.15); flor(130,90,1); flor(84,108,.98); flor(116,110,1);
+
+  return svg;
+}
+
+btnMas.addEventListener('click', ()=>{
+  galeria.style.display = 'grid';
+  galeria.setAttribute('aria-hidden','false');
+  // crear 6–8 mini-ramos variados
+  const cuantos = 6 + Math.floor(Math.random()*3);
+  galeria.innerHTML = '';
+  for(let i=0; i<cuantos; i++){
+    const card = document.createElement('div');
+    card.className = 'thumb';
+    const badge = document.createElement('div');
+    badge.className = 'badge';
+    badge.textContent = (i%2===0)? '💛 Amarillas' : '🌼 Para ti';
+    card.appendChild(badge);
+    const mini = crearMiniRamo(0.56 + Math.random()*0.16);
+    card.appendChild(mini);
+    galeria.appendChild(card);
+    // animación de entrada
+    card.animate([{ opacity:0, transform:'translateY(10px) scale(.96)' }, { opacity:1, transform:'none' }],
+                 { duration:500 + i*60, easing:'cubic-bezier(.2,.8,.2,1)', fill:'forwards' });
+  }
+  confetti(); soltarPetalos(28);
+});
+
+/* accesibilidad */
+[btnAbrir,btnGigante,btnMas].forEach(b=>b.addEventListener('keyup',e=>{ if(e.key==='Enter') b.click(); }));
+</script>
+</body>
+</html>
